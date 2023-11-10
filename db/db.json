@@ -71,6 +71,12 @@
       "body": "Start typing...",
       "userId": 1,
       "id": 11
+    },
+    {
+      "title": "New Note",
+      "body": "Start typing...",
+      "userId": 1,
+      "id": 12
     }
   ]
 }

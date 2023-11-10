@@ -1,21 +1,26 @@
-import React from "react";
-import NoteEditor from "./NoteEditor";
-import NoteViewer from "./NoteViewer";
-import Instructions from "./Instructions";
+import React from 'react';
+import NoteEditor from './NoteEditor';
+import NoteViewer from './NoteViewer';
+import Instructions from './Instructions';
 
-/*
-  Advice: If you cannot figure out how to get this component to work,
-          move the div and getContent up into NoteContainer and
-          try to get it to work in the parent first.
-          Then complete the rest of your app before attempting to
-          refactor to get this Content component to work.
-*/
-function Content() {
+function Content({
+  selectedNote,
+  editMode,
+  handleEdit,
+  handleSave,
+  handleCancel,
+}) {
   const getContent = () => {
-    if (false) {
-      return <NoteEditor />;
-    } else if (false) {
-      return <NoteViewer />;
+    if (editMode) {
+      return (
+        <NoteEditor
+          note={selectedNote}
+          onSave={handleSave}
+          onCancel={handleCancel}
+        />
+      );
+    } else if (selectedNote) {
+      return <NoteViewer note={selectedNote} onEdit={handleEdit} />;
     } else {
       return <Instructions />;
     }
