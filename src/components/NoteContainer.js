@@ -23,8 +23,16 @@ function NoteContainer() {
     fetchNotes();
   }, []);
 
-  const handleSearch = (term) => {
+  const handleSearch = async (term) => {
     setSearchTerm(term);
+
+    try {
+      const response = await fetch(`http://localhost:3000/notes?q=${term}`);
+      const data = await response.json();
+      setNotes(data);
+    } catch (error) {
+      console.error('Error searching notes:', error);
+    }
   };
 
   const handleNoteClick = (note) => {
