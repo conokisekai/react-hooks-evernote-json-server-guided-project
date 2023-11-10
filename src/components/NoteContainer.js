@@ -72,8 +72,34 @@ function NoteContainer() {
     setEditMode(true);
   };
 
-  const handleSave = (updatedNote) => {
-    setEditMode(false);
+  const handleSave = async (updatedNote) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/notes/${updatedNote.id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(updatedNote),
+        }
+      );
+
+      if (response.ok) {
+        const updatedNoteData = await response.json();
+        setNotes((prevNotes) =>
+          prevNotes.map((note) =>
+            note.id === updatedNoteData.id ? updatedNoteData : note
+          )
+        );
+        setEditMode(false);
+      } else {
+        console.error('Error saving note:', response.status);
+      }
+    } catch (error) {
+      console.error('Error saving note:', error);
+    }
   };
 
   const handleCancel = () => {
