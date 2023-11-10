@@ -9,7 +9,19 @@ function NoteContainer() {
   const [editMode, setEditMode] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/notes');
+        const data = await response.json();
+        setNotes(data);
+      } catch (error) {
+        console.error('Error fetching notes:', error);
+      }
+    };
+
+    fetchNotes();
+  }, []);
 
   const handleSearch = (term) => {
     setSearchTerm(term);
