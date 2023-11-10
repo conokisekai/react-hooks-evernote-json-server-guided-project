@@ -1,21 +1,45 @@
-# Phase 2 Guided Project Guidelines
+# Evernote-Like React App
 
-In this guided project, we'll be building an Evernote-like application with React.
+## Author
 
-Your goal will be to complete the baseline deliverables using the provided
-starter code and then make this project your own by building out unique stretch
-goals. Some suggestions are listed below, but try to be creative!
+Conrad Kambi
+https://github.com/conokisekai
 
-## Requirements
+# Description
 
-- Complete all of the deliverables
-- Build out at least 1 stretch goal feature
+This project is a React-based application that mimics the functionality of Evernote, allowing users to create, edit, and organize notes. It features a user-friendly interface with a sidebar for quick navigation, a content area for viewing and editing notes, and search functionality for efficient note retrieval.
+
+## Functional Requirements
+
+1. **User Authentication:**
+   - Users should be able to sign up and log in to the application.
+   - User authentication should be secure and include features like password recovery.
+
+2. **Note Management:**
+   - Users can create, view, edit, and delete notes.
+   - Each note should have a title and body.
+
+3. **Note Navigation:**
+   - Users should be able to navigate between notes easily.
+   - A sidebar should display a list of all notes for quick access.
+
+4. **Search Functionality:**
+   - Implement a search feature to allow users to search for notes by title.
+   - Optional: Implement advanced search features, such as searching by body content.
+
+5. **Sorting and Filtering:**
+   - Allow users to sort notes by date created, date edited, or alphabetically.
+   - Implement filters to organize notes based on specific criteria.
+
+6. **Sharing and Emailing (Stretch Goals):**
+   - Stretch goal: Implement the ability to share notes with other users.
+   - Stretch goal: Allow users to email notes directly from the application.
 
 ## Setup
 
-To get started, fork and clone this repository.
-
-The codebase is split up into a JSON Server API backend and a React frontend.
+1. To get started, fork and clone this repository.
+2. Navigate to the frontend directory.
+3. Install dependencies.
 
 ### Frontend
 
@@ -131,9 +155,30 @@ Some suggestions:
 
 - Add the ability to filter by body, date created, date edited, etc.
 - Sorting by date created, date edited, alphabetical, etc.
-- Use `react-router` to create a multi-page app
-- User signup & login
-- Sharing notes with other users
-- Rich text formatting
 - Tagging
 - Emailing notes
+
+# License
+## Learn.co Educational Content License
+
+Copyright (c) 2018 Flatiron School, Inc
+
+The Flatiron School, Inc. owns this Educational Content. However, the Flatiron
+School supports the development and availability of educational materials in
+the public domain. Therefore, the Flatiron School grants Users of the Flatiron
+Educational Content set forth in this repository certain rights to reuse, build
+upon and share such Educational Content subject to the terms of the Educational
+Content License set forth [here](http://learn.co/content-license)
+(http://learn.co/content-license). You must read carefully the terms and
+conditions contained in the Educational Content License as such terms govern
+access to and use of the Educational Content.
+
+Flatiron School is willing to allow you access to and use of the Educational
+Content only on the condition that you accept all of the terms and conditions
+contained in the Educational Content License set forth
+[here](http://learn.co/content-license) (http://learn.co/content-license).  By
+accessing and/or using the Educational Content, you are agreeing to all of the
+terms and conditions contained in the Educational Content License.  If you do
+not agree to any or all of the terms of the Educational Content License, you
+are prohibited from accessing, reviewing or using in any way the Educational
+Content.
