@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-function NoteItem() {
+function NoteItem({ note, onClick }) {
   return (
-    <li>
-      <h2>Title</h2>
-      <p>Caption...</p>
+    <li onClick={() => onClick(note)}>
+      <h2>{note.title}</h2>
+      <p>{note.body}</p>
     </li>
   );
 }
