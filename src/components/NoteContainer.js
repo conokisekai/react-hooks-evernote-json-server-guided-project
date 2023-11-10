@@ -3,11 +3,13 @@ import Search from './Search';
 import Sidebar from './Sidebar';
 import Content from './Content';
 
-function NoteContainer() {
+const NoteContainer = () => {
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [bodySearchTerm, setBodySearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('date-created');
 
   useEffect(() => {
     async function fetchNotes() {
@@ -31,6 +33,19 @@ function NoteContainer() {
       setNotes(data);
     } catch (error) {
       console.error('Error searching notes:', error);
+    }
+  };
+
+  const handleBodySearch = async (term) => {
+    setBodySearchTerm(term);
+    try {
+      const response = await fetch(
+        `http://localhost:3000/notes?body_like=${term}`
+      );
+      const data = await response.json();
+      setNotes(data);
+    } catch (error) {
+      console.error('Error searching notes by body:', error);
     }
   };
 
@@ -103,9 +118,13 @@ function NoteContainer() {
     setEditMode(false);
   };
 
+  const handleSortChange = (option) => {
+    setSortBy(option);
+  };
+
   return (
     <>
-      <Search onSearch={handleSearch} />
+      <Search onSearch={handleSearch} onBodySearch={handleBodySearch} />
       <div className="container">
         <Sidebar
           notes={notes}
@@ -119,10 +138,11 @@ function NoteContainer() {
           handleEdit={handleEdit}
           handleSave={handleSave}
           handleCancel={handleCancel}
+          handleSortChange={handleSortChange}
         />
       </div>
     </>
   );
-}
+};
 
 export default NoteContainer;
