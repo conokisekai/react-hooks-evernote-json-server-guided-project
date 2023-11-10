@@ -1,13 +1,16 @@
-import React from "react";
-import Header from "./Header";
-import NoteContainer from "./NoteContainer";
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Header from './Header';
+import Routes from './Routes'; 
 
 function App() {
   return (
-    <div className="app">
-      <Header />
-      <NoteContainer />
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <Routes />
+      </div>
+    </Router>
   );
 }
 

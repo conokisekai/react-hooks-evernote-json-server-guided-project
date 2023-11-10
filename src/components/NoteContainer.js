@@ -10,7 +10,7 @@ function NoteContainer() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const fetchNotes = async () => {
+    async function fetchNotes() {
       try {
         const response = await fetch('http://localhost:3000/notes');
         const data = await response.json();
@@ -18,14 +18,13 @@ function NoteContainer() {
       } catch (error) {
         console.error('Error fetching notes:', error);
       }
-    };
+    }
 
     fetchNotes();
   }, []);
 
   const handleSearch = async (term) => {
     setSearchTerm(term);
-
     try {
       const response = await fetch(`http://localhost:3000/notes?q=${term}`);
       const data = await response.json();
@@ -41,12 +40,6 @@ function NoteContainer() {
   };
 
   const handleNewNote = async () => {
-    const newNote = {
-      title: 'New Note',
-      body: 'Start typing...',
-      userId: 1,
-    };
-
     try {
       const response = await fetch('http://localhost:3000/notes', {
         method: 'POST',
@@ -54,12 +47,16 @@ function NoteContainer() {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify(newNote),
+        body: JSON.stringify({
+          title: 'New Note',
+          body: 'Start typing...',
+          userId: 1,
+        }),
       });
 
       if (response.ok) {
-        const createdNote = await response.json();
-        setNotes((prevNotes) => [...prevNotes, createdNote]);
+        const newNote = await response.json();
+        setNotes((prevNotes) => [...prevNotes, newNote]);
       } else {
         console.error('Error creating new note:', response.status);
       }
