@@ -4,6 +4,11 @@ import Sidebar from './Sidebar';
 import Content from './Content';
 
 function NoteContainer() {
+  const [notes, setNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState(null);
+  const [editMode, setEditMode] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
   useEffect(() => {}, []);
 
   const handleSearch = (term) => {
