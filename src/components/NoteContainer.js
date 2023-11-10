@@ -40,7 +40,33 @@ function NoteContainer() {
     setEditMode(false);
   };
 
-  const handleNewNote = () => {};
+  const handleNewNote = async () => {
+    const newNote = {
+      title: 'New Note',
+      body: 'Start typing...',
+      userId: 1,
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/notes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(newNote),
+      });
+
+      if (response.ok) {
+        const createdNote = await response.json();
+        setNotes((prevNotes) => [...prevNotes, createdNote]);
+      } else {
+        console.error('Error creating new note:', response.status);
+      }
+    } catch (error) {
+      console.error('Error creating new note:', error);
+    }
+  };
 
   const handleEdit = () => {
     setEditMode(true);
