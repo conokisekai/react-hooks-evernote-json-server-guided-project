@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 
-function Search({ onSearch }) {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleSearch = () => {
-    onSearch(searchTerm);
-  };
+const Search = ({ onSearch, onBodySearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [bodySearchTerm, setBodySearchTerm] = useState("");
 
   return (
     <div className="filter">
@@ -18,11 +11,20 @@ function Search({ onSearch }) {
         type="text"
         placeholder="Search Notes"
         value={searchTerm}
-        onChange={handleChange}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={() => onSearch(searchTerm)}>Search</button>
+
+      <input
+        id="search-bar-body"
+        type="text"
+        placeholder="Search Notes by Body"
+        value={bodySearchTerm}
+        onChange={(e) => setBodySearchTerm(e.target.value)}
+      />
+      <button onClick={() => onBodySearch(bodySearchTerm)}>Search</button>
     </div>
   );
-}
+};
 
 export default Search;

@@ -77,6 +77,12 @@
       "body": "It's a beginning of a new dawn. We shall rise above and beyond to conquer the coding world!",
       "userId": 1,
       "id": 12
+    },
+    {
+      "title": "New Note",
+      "body": "Start typing...",
+      "userId": 1,
+      "id": 13
     }
   ]
 }
